@@ -1,1 +1,48 @@
+### Importation des librairies
 
+
+import cv2 as cv
+import numpy as np
+import requests
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+import sys
+import datetime
+from tensorflow import keras
+from tensorflow.keras.models import Model
+import tensorflow as tf
+from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from tensorflow.keras.preprocessing import image
+from tensorflow.keras.optimizers import RMSprop
+import os
+import pathlib
+
+
+
+#Loading data
+
+#importation d'une image
+
+paint = image.load_img("/Users/admin/Desktop/GANS monet/Data/test/1f9667f2a7.png")
+
+ matrice = plt.imshow(paint) #affiche le tableau
+
+cv.imread("/Users/admin/Desktop/GANS monet/Data/test/0a5075d42a.png") #permet d'afficher l'image en format matriciel
+matrice.shape #affiche la taille de la matrice
+
+
+
+###Boucle qui permet d'afficher le nom de tous les fichier dans le dossier ou ils sont stockés
+
+from PIL import Image #bien spécifier les librairies avant de lancer la boucle
+import glob
+import os.path
+
+imgs = []
+path = ('/Users/admin/Desktop/GANS monet/Data/monet_jpg') ## la boucle récupère les fichier que l'on veut utiliser ds le modèle
+valid_images = [".jpg",".gif",".png",".tga"]
+for f in os.listdir(path):
+    ext = os.path.splitext(f)[1]
+    if ext.lower() not in valid_images:
+        continue
+    imgs.append(Image.open(os.path.join(path,f)))
